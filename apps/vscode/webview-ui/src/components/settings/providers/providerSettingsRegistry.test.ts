@@ -1,4 +1,4 @@
-import type { ProviderListing } from "@shared/proto/cline/models"
+import type { ProviderListing } from "@shared/proto/index.cline"
 import { describe, expect, it } from "vitest"
 import {
 	getFallbackGenericProviderSettings,
@@ -35,6 +35,10 @@ describe("providerSettingsRegistry", () => {
 			),
 		).toEqual({
 			allowsCustomIds: false,
+			baseUrlField: {
+				label: "Base URL",
+				placeholder: "https://generativelanguage.googleapis.com",
+			},
 			providerId: "gemini",
 			providerName: "Google Gemini",
 			signupUrl: "https://aistudio.google.com/apikey",
@@ -176,6 +180,16 @@ describe("providerSettingsRegistry", () => {
 			providerId: "together",
 			providerName: "Together",
 			signupUrl: "https://api.together.ai/settings/api-keys",
+		})
+		expect(getFallbackGenericProviderSettings("gemini")).toEqual({
+			allowsCustomIds: false,
+			baseUrlField: {
+				label: "Base URL",
+				placeholder: "https://generativelanguage.googleapis.com",
+			},
+			providerId: "gemini",
+			providerName: "Gemini",
+			signupUrl: "https://aistudio.google.com/apikey",
 		})
 		expect(getFallbackGenericProviderSettings("zai-coding-plan")).toEqual({
 			allowsCustomIds: false,

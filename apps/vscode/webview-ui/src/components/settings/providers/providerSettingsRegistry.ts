@@ -1,4 +1,4 @@
-import type { ProviderListing } from "@shared/proto/cline/models"
+import type { ProviderListing } from "@shared/proto/index.cline"
 import type { GenericProviderSettingsProps } from "./GenericProviderSettings"
 
 type GenericProviderSettingsConfig = Omit<GenericProviderSettingsProps, "currentMode" | "isPopup" | "showModelOptions">
@@ -57,6 +57,10 @@ const GENERIC_PROVIDER_PRESENTATION_OVERRIDES: Record<string, GenericProviderPre
 	},
 	gemini: {
 		signupUrl: "https://aistudio.google.com/apikey",
+		baseUrlField: {
+			label: "Base URL",
+			placeholder: "https://generativelanguage.googleapis.com",
+		},
 	},
 	huggingface: {
 		signupUrl: "https://huggingface.co/settings/tokens",
